@@ -4,20 +4,20 @@ import copy
 with open("day5/input.txt") as fp:
     lines =  [l.strip() for l in fp.readlines()]
 
-counter = 0
+c = 0
 stacks = []
 
-while lines[counter+1] != "":
-    line = lines[counter][1::4]
+while lines[c+1] != "":
+    line = lines[c][1::4]
     stacks.extend([[] for _ in range(len(line) - len(stacks))])
     for s, l in zip(stacks, line):
         if l != " ":
             s.insert(0, l)
-    counter += 1
+    c += 1
 
 stacks2 = copy.deepcopy(stacks)
 
-for line in lines[counter+2:]:
+for line in lines[c+2:]:
     v, src, dst = map(int, re.search(r"move (\d+) from (\d+) to (\d+)", line).groups())
     for _ in range(v):
         stacks[dst-1].append(stacks[src-1].pop())
