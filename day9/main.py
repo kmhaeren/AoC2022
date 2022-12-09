@@ -1,7 +1,4 @@
 
-import math
-
-
 def move_knot(head, tail):
     hx, hy = head
     tx, ty = tail
